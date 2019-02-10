@@ -1,4 +1,4 @@
-setup.sh is a setup script for installing a Python3 delevoper environment on a CentOS 7 host, e.g. an Amazon t2.micro EC2 using 
+setup.sh is a setup script for installing a Python3 delevoper environment on a CentOS 7 host, e.g. an Amazon t2.micro EC2 using ami-0f2b4fc905b0bd1f1
 
 To setup the environment, follow these 5 steps:
 1. Create a CloudFormation stack using the ./cloudformationtemplate.yml file in this repo
