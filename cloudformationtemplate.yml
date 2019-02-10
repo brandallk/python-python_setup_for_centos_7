@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "CentOS 7 instance with Python 3 development environment"
+
+Resources:
+
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Python3onCentos7SG
+      GroupName: Python3onCentos7SG
+      # Default VPC in us-east-2 (Ohio):
+      VpcId: vpc-1c695b74
+      SecurityGroupIngress:
+        -
+          IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          # Home IP in Caldwell:
+          CidrIp: 67.60.221.24/32
+
+  Python3onCentos7:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0f2b4fc905b0bd1f1
+      # Default public subnet for us-east-2a in vpc-1c695b74:
+      SubnetId: subnet-334e145b
+      KeyName: BrkTrialAws
+      SecurityGroupIds:
+        - !Ref InstanceSecurityGroup
+      BlockDeviceMappings:
+        -
+          DeviceName: "/dev/sda1"
+          Ebs:
+            VolumeSize: 24
+            VolumeType: gp2
+      Tags:
+        -
+          Key: Name
+          Value: Python3onCentos7
+          
