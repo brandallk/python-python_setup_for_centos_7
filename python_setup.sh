@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/bash
 
 sudo yum update -y
 
@@ -51,8 +51,11 @@ curl https://raw.githubusercontent.com/brandallk/content-python3-sysadmin/master
 
 # Make a /home/centos/src folder, clone the "python_scripts" repo from Github, and checkout its "wip" branch
 # Note: The following lines tend NOT to run when you run the setup.sh script. May have to do this manually.
-mkdir /home/centos/src
-cd /home/centos/src
+mkdir -p /home/centos/python/bin
+export PATH=$PATH:/home/centos/python/bin
+exec $SHELL
+mkdir -p /home/centos/python/src
+cd /home/centos/python/src
 git clone https://github.com/brandallk/python_scripts.git
 cd python_scripts
 git checkout wip || git checkout -b wip
